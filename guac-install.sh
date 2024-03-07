@@ -121,6 +121,23 @@ if [[ -z "${installDuo}" ]] && [[ "${installTOTP}" != true ]]; then
     else
         installDuo=false
     fi
+    echo -e -n "${CYAN}Would you like to install screen recording functionality? (y/N): ${NC}"
+read installScreenRecording
+installScreenRecording=${installScreenRecording,,} # to lowercase
+if [[ "$installScreenRecording" == "y" ]]; then
+    installScreenRecording=true
+else
+    installScreenRecording=false
+fi
+
+echo -e -n "${CYAN}Would you like to install LDAP support? (y/N): ${NC}"
+read installLDAP
+installLDAP=${installLDAP,,} # to lowercase
+if [[ "$installLDAP" == "y" ]]; then
+    installLDAP=true
+else
+    installLDAP=false
+fi
 fi
 
 # We can't install TOTP and Duo at the same time...
